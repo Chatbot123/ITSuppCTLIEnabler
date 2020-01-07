@@ -18,7 +18,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 				//----------------------------------------------
 			var reply = [{
 				type: 'text',
-				content: speech
+				webhookresponse: speech
 				}];
 
 			res.status(200).json({
