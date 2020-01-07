@@ -24,7 +24,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 		  	  
 		  
 		  //chk for person name entity
-		  if(req.body.nlp.entities.hasOwnProperty('person'))
+		/*  if(req.body.nlp.entities.hasOwnProperty('person'))
 		  {
 			var name = req.body.nlp.entities.person[0].raw;
 		  }
@@ -63,10 +63,10 @@ app.post('/CheckAccountStatus', (req, res) =>
             var result = JSON.parse(response.body);
            	var incident_no =  result.records[0].number;
 		var sys_id = result.records[0].sys_id;
-		var speech = "Incident Created Successfully for issue "+issue+" and your incident number is "+incident_no;
-		speech = speech+" Sys_id is "+sys_id+"\r\n";
+		var speech = "Incident Created Successfully for issue "+issue+" and your incident number is "+incident_no;*/
+		//speech = speech+" Sys_id is "+sys_id+"\r\n";
 			
-		speech = speech+" Thanks for contacting us."
+		speech = " Thanks for contacting us."
                       
 				//----------------------------------------------
 			var reply = [{
