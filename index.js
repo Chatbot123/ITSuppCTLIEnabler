@@ -19,9 +19,10 @@ app.post('/CheckAccountStatus', (req, res) =>
 	{	
 		//speech = " Thanks for contacting us. checking for personal account status"
 		var csrfToken;
+		var url = "https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV/UserStatusCheckSet(Aduser='praveen.varriam@centurylink.com',PwdStatusCheckFlag='X',UserLockCheckFlag='X')/?$format=json",
 		var options = { 
 				method: 'GET',
-	  			url: "https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV/UserStatusCheckSet(Aduser='praveen.varriam@centurylink.com',PwdStatusCheckFlag='X',UserLockCheckFlag='X')/?$format=json",
+	  			
 	 				//'https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV;o=ERP_700/ADUserDetailsSet?$filter=(Aduser%20eq%20%27praveen.varriam@centurylink.com%27)&$format=json',
 				headers: 
 	   				{ 
@@ -33,7 +34,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 				};
 
 
-		requestify.request(options).then(function(response,error)
+		requestify.request(url,options).then(function(response,error)
 		{
 		  	var csrfToken;
 	  		if (!error && response.statusCode == 200) 
