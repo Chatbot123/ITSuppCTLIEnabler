@@ -33,7 +33,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 			
 		//console.log(speech);
 		
-	}
+	
 	//----------------------------------------------
 });
 
