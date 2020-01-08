@@ -8,7 +8,7 @@ app.use(bodyParser.json())
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
-var speech;
+global.speech;
 //code for creating servicenow incident
 app.post('/CheckAccountStatus', (req, res) => 
 {
@@ -16,8 +16,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 	  //console.log(req.body.conversation.memory.intent_name.slug);
 	  //speech = " Thanks for contacting us."
 	//var speech;
-	//if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
-	//{	
+	if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
+	{	
 		//speech = " Thanks for contacting us. checking for personal account status"
 		var csrfToken;
 		var url = "https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV/UserStatusCheckSet(Aduser='praveen.varriam@centurylink.com',PwdStatusCheckFlag='X',UserLockCheckFlag='X')/?$format=json";
@@ -61,30 +61,30 @@ app.post('/CheckAccountStatus', (req, res) =>
 	   			 speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
 			
-			console.log(speech);
-				var reply = [{
-						type: 'text',
-						content: speech
-						}];
-
-					res.status(200).JSON.send({
-							replies: reply });
+			
 		}, function(error) 
 		{
 						var errorMessage = "GET request failed";
 						if(error.code && error.body) {
 							errorMessage += " - " + error.code + ": " + error.body
-						}
+		}
 						console.log("Something went wrong with the call");
 						console.log(errorMessage);
 						console.log(error.body);
 						
-									
+		console.log(speech);
+				var reply = [{
+						type: 'text',
+						content: speech
+						}];
+
+					res.status(200).json({
+							replies: reply });							
 		});
 			
 		//console.log(speech);
 		
-	//}
+	}
 	//----------------------------------------------
 });
 
