@@ -36,13 +36,13 @@ app.post('/CheckAccountStatus', (req, res) =>
 				};
 
 
-		requestify.request(url,options).then(function(response,error)
+		requestify.request(url,options).then(function(response)
 		{
 		  	var csrfToken;
 			 console.log(response);
 			console.log("status code"+response.code);
 			
-	  		if (!error && response.code == 200) 
+	  		if (response.code == 200) 
 			{   
 				csrfToken = response.headers['x-csrf-token'];
 				console.log("csrf token" + csrfToken);
@@ -60,7 +60,9 @@ app.post('/CheckAccountStatus', (req, res) =>
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
-			console.log(speech);	//----------------------------------------------
+			console.log(speech);
+			speech = speech.replace(/  +/g, ' ');
+			console.log(speech);//----------------------------------------------
 			var reply = [{
 				type: 'text',
 				content: speech
