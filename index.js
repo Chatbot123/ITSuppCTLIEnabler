@@ -39,16 +39,17 @@ app.post('/CheckAccountStatus', (req, res) =>
 		{
 		  	var csrfToken;
 			 console.log(response.body);
-			console.log("status code"+response.statusCode);
+			console.log("status code"+response.status);
 			
-	  		//if (!error && response.statusCode == 200) 
-			//{   
+	  		if (!error && response.status == 200) 
+			{   
 				csrfToken = response.headers['x-csrf-token'];
 				console.log("csrf token" + csrfToken);
 				var res = JSON.parse(response.body);
 				var statusDetail = res.d.AccountStatus;               
-	 		//}
+	 		}
 	 		console.log("statusDetail" + statusDetail);
+			var speech;
 	 		if (statusDetail == "ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED")
 	 		{
 	   			speech = "Your account is already unlocked!";
