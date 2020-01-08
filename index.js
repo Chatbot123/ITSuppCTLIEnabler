@@ -59,6 +59,6 @@ app.post('/CheckAccountStatus', (req, res) =>
 				}];
 			res.status(200).json({
 					replies: reply });
-		}
+		});
 	}	//----------------------------------------------
 });
