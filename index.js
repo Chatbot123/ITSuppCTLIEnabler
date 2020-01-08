@@ -50,11 +50,11 @@ app.post('/CheckAccountStatus', (req, res) =>
 	 		}
 	 		console.log("statusDetail" + statusDetail);
 			var speech;
-	 		if (statusDetail == "ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED")
+	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
 	 		{
 	   			speech = "Your account is already unlocked!";
 	 		}
-	 		else if(statusDetail == "ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED")
+	 		else if(statusDetail == 'ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED')
 	 		{
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
