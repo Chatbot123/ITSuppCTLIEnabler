@@ -49,7 +49,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 				var res = JSON.parse(response.body);
 				var statusDetail = res.d.AccountStatus;               
 	 		}
-	 		//console.log("statusDetail" + statusDetail);
+	 		console.log("statusDetail" + statusDetail);
 			
 	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
 	 		{
@@ -61,7 +61,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 	   			 speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
 			
-			
+			console.log(speech);
 			
 						    
 		});
