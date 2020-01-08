@@ -15,6 +15,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 	  console.log(JSON.stringify(req.body));
 	  //console.log(req.body.conversation.memory.intent_name.slug);
 	  //speech = " Thanks for contacting us."
+	var speech;
 	if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
 	{	
 		//speech = " Thanks for contacting us. checking for personal account status"
@@ -49,7 +50,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 				var statusDetail = res.d.AccountStatus;               
 	 		}
 	 		console.log("statusDetail" + statusDetail);
-			var speech;
+			
 	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
 	 		{
 	   			speech = "Your account is already unlocked!";
@@ -67,5 +68,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 			res.status(200).json({
 					replies: reply });
 		});
-	}	//----------------------------------------------
+		
+	}
+	res.send();//----------------------------------------------
 });
