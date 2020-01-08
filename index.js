@@ -15,7 +15,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 	  //console.log(JSON.stringify(req.body));
 	  //console.log(req.body.conversation.memory.intent_name.slug);
 	  //speech = " Thanks for contacting us."
-	var speech;
+	//var speech;
 	if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
 	{	
 		//speech = " Thanks for contacting us. checking for personal account status"
@@ -53,27 +53,24 @@ app.post('/CheckAccountStatus', (req, res) =>
 			
 	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
 	 		{
-	   			speech = "Your account is already unlocked!";
+	   			var speech = "Your account is already unlocked!";
 	 		}
 	 		else if(statusDetail == 'ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED')
 	 		{
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
-	   			speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
+	   			var speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
 			//console.log(speech);
 			speech = speech.replace(/  +/g, ' ');
 			console.log(speech);//----------------------------------------------
 			//console.log(speech);
-			/*var reply = [{
+			var reply = [{
 				type: 'text',
 				content: speech
-				}];*/
-			res.send({
-    					replies: [{
-      					type: 'text',
-      					content: speech,
-    					}],
-  				})
+				}];
+			res.status(200).json({
+    					replies: reply
+  				});
 			//res.status(200).json({	replies: reply	});
 			
 			
