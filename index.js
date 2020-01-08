@@ -62,13 +62,13 @@ app.post('/CheckAccountStatus', (req, res) =>
 	 		}
 			
 			console.log(speech);
-		var reply = [{
-				type: 'text',
-				content: speech
-				}];
+				var reply = [{
+						type: 'text',
+						content: speech
+						}];
 
-			res.status(200).json({
-					replies: reply });
+					res.status(200).JSON.send({
+							replies: reply });
 		}, function(error) 
 		{
 						var errorMessage = "GET request failed";
