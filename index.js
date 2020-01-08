@@ -12,7 +12,7 @@ app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 //code for creating servicenow incident
 app.post('/CheckAccountStatus', (req, res) => 
 {
-		  console.log(req.body);
+		  console.log(JSON.parse(req.body));
 		  speech = " Thanks for contacting us."
                   if(req.body.memory.intent_name.slug=='unlockaccount-personal')
 		  {	
