@@ -64,14 +64,18 @@ app.post('/CheckAccountStatus', (req, res) =>
 			speech = speech.replace(/  +/g, ' ');
 			console.log(speech);//----------------------------------------------
 			//console.log(speech);
-		var reply = [{
+			/*var reply = [{
 				type: 'text',
 				content: speech
-				}];
-			res.status(200).json({
-						replies: reply
-						
-					});
+				}];*/
+			res.send({
+    					replies: [{
+      					type: 'text',
+      					content: speech,
+    					}],
+  				})
+			//res.status(200).json({	replies: reply	});
+			
 			
 						    
 		});
@@ -81,7 +85,4 @@ app.post('/CheckAccountStatus', (req, res) =>
 	//----------------------------------------------
 });
 
-app.post('/errors', (req, res) => {
-  console.log(req.body) 
-  res.send() 
-});
+
