@@ -16,8 +16,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 	  //console.log(req.body.conversation.memory.intent_name.slug);
 	  //speech = " Thanks for contacting us."
 	var speech;
-	if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
-	{	
+	//if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
+	//{	
 		//speech = " Thanks for contacting us. checking for personal account status"
 		var csrfToken;
 		var url = "https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV/UserStatusCheckSet(Aduser='praveen.varriam@centurylink.com',PwdStatusCheckFlag='X',UserLockCheckFlag='X')/?$format=json";
@@ -74,7 +74,7 @@ app.post('/CheckAccountStatus', (req, res) =>
     					replies: reply
   				});
 		
-	}
+	//}
 	//----------------------------------------------
 });
 
