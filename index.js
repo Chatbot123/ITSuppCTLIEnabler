@@ -14,53 +14,12 @@ app.post('/CheckAccountStatus', (req, res) =>
 {
 	  //console.log(JSON.stringify(req.body));
 	  //console.log(req.body.conversation.memory.intent_name.slug);
-	  //speech = " Thanks for contacting us."
+	  speech = " Thanks for contacting us."
 	//var speech;
-	if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
-	{	
+	//if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
+	//{	
 		//speech = " Thanks for contacting us. checking for personal account status"
-		var csrfToken;
-		var url = "https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV/UserStatusCheckSet(Aduser='praveen.varriam@centurylink.com',PwdStatusCheckFlag='X',UserLockCheckFlag='X')/?$format=json";
-		//console.log(url);
-		var options = { 
-				method: 'GET',
-	  			
-	 				//'https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV;o=ERP_700/ADUserDetailsSet?$filter=(Aduser%20eq%20%27praveen.varriam@centurylink.com%27)&$format=json',
-				headers: 
-	   				{ 
-					     'Host': 'sapmobile-gwx.centurylink.com',
-					     'Authorization': 'Basic Q0hBVEJPVF9URVNUOlRlc3QxMjM0',
-					     'content-type':'application/json',
-					     'x-csrf-token':'Fetch' 
-					} 
-				};
-
-
-		requestify.request(url,options).then(function(response)
-		{
-		  	var csrfToken;
-			// console.log(response);
-			//console.log("status code"+response.code);
-			
-	  		if (response.code == 200) 
-			{   
-				csrfToken = response.headers['x-csrf-token'];
-				//console.log("csrf token" + csrfToken);
-				var res = JSON.parse(response.body);
-				var statusDetail = res.d.AccountStatus;               
-	 		}
-	 		//console.log("statusDetail" + statusDetail);
-			
-	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
-	 		{
-	   			var speech = "Your account is already unlocked!";
-	 		}
-	 		else if(statusDetail == 'ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED')
-	 		{
-			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
-	   			var speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
-	 		}
-			//console.log(speech);
+	
 			speech = speech.replace(/  +/g, ' ');
 			//console.log(speech);//----------------------------------------------
 			//console.log(speech);
@@ -73,14 +32,14 @@ app.post('/CheckAccountStatus', (req, res) =>
     					replies: reply
   				});
 			//res.status(200).json({	replies: reply	});
-			console.log(res.body);
+			//console.log(res.body);
 			
 			
 						    
-		});
 		
 		
-	}
+		
+	//}
 	//----------------------------------------------
 });
 
