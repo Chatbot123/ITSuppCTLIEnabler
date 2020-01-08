@@ -38,7 +38,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 		requestify.request(url,options).then(function(response,error)
 		{
 		  	var csrfToken;
-			console.log("status code"+response.statusCode);
+			 console.log(JSON.parse(response.body));
+			//console.log("status code"+result.statusCode);
 	  		if (!error && response.statusCode == 200) 
 			{   
 				csrfToken = response.headers['x-csrf-token'];
