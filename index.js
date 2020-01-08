@@ -20,6 +20,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 		//speech = " Thanks for contacting us. checking for personal account status"
 		var csrfToken;
 		var url = "https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV/UserStatusCheckSet(Aduser='praveen.varriam@centurylink.com',PwdStatusCheckFlag='X',UserLockCheckFlag='X')/?$format=json";
+		console.log(url);
 		var options = { 
 				method: 'GET',
 	  			
@@ -37,6 +38,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 		requestify.request(url,options).then(function(response,error)
 		{
 		  	var csrfToken;
+			console.log("status code"+response.statusCode);
 	  		if (!error && response.statusCode == 200) 
 			{   
 				csrfToken = response.headers['x-csrf-token'];
