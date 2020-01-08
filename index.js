@@ -39,9 +39,9 @@ app.post('/CheckAccountStatus', (req, res) =>
 		{
 		  	var csrfToken;
 			 console.log(response);
-			console.log("status code"+response.status);
+			console.log("status code"+response.code);
 			
-	  		if (!error && response.status == 200) 
+	  		if (!error && response.code == 200) 
 			{   
 				csrfToken = response.headers['x-csrf-token'];
 				console.log("csrf token" + csrfToken);
