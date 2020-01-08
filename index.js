@@ -41,12 +41,12 @@ app.post('/CheckAccountStatus', (req, res) =>
 			 console.log(JSON.parse(response.body));
 			console.log("status code"+JSON.parse(response.statusCode));
 			
-	  		if (!error && response.statusCode == 200) 
-			{   
+	  		//if (!error && response.statusCode == 200) 
+			//{   
 				csrfToken = response.headers['x-csrf-token'];
-				var res = JSON.parse(body);
+				var res = JSON.parse(response.body);
 				statusDetail = res.d.AccountStatus;               
-	 		}
+	 		//}
 	 		console.log("statusDetail" + statusDetail);
 	 		if (statusDetail == "ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED")
 	 		{
