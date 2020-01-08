@@ -68,8 +68,10 @@ app.post('/CheckAccountStatus', (req, res) =>
 				type: 'text',
 				content: speech
 				}];
-			res.json({
-					replies: reply });
+			res.status(200).json({
+						replies: reply
+						
+					});
 			
 						    
 		});
