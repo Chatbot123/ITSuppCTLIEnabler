@@ -61,11 +61,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 	   			 speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
 			
-			
-			
-						    
-		});
-		var reply = [{
+			var reply = [{
 				type: 'text',
 				content: speech
 				}];
@@ -73,6 +69,10 @@ app.post('/CheckAccountStatus', (req, res) =>
 			res.status(200).json({
     					replies: reply
   				});
+			
+						    
+		});
+		
 		
 	//}
 	//----------------------------------------------
