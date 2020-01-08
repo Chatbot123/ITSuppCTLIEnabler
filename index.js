@@ -15,7 +15,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 	  //console.log(JSON.stringify(req.body));
 	  //console.log(req.body.conversation.memory.intent_name.slug);
 	  //speech = " Thanks for contacting us."
-	//var speech;
+	var speech;
 	if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
 	{	
 		//speech = " Thanks for contacting us. checking for personal account status"
