@@ -13,13 +13,13 @@ app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 app.post('/CheckAccountStatus', (req, res) => 
 {
 		  console.log(JSON.stringify(req.body));
-		var v_req = JSON.stringify(req.body);	
-	console.log(v_req.conversation.memory.intent_name.slug);
+		//var v_req = JSON.stringify(req.body);	
+	console.log(req.body.conversation.memory.intent_name.slug);
 		  speech = " Thanks for contacting us."
-                 if(v_req.conversation.memory.intent_name.slug=="unlockaccount-personal")
-		 {	
-			speech = " Thanks for contacting us. checking for personal account status"
-		  }
+               //  if(v_req.conversation.memory.intent_name.slug=="unlockaccount-personal")
+		// {	
+		//	speech = " Thanks for contacting us. checking for personal account status"
+		 // }
 				//----------------------------------------------
 			var reply = [{
 				type: 'text',
