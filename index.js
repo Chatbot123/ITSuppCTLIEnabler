@@ -62,11 +62,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 	 		}
 			
 			console.log(speech);
-			
-						    
-		});
-		console.log(speech);
-		var reply = [{
+			var reply = [{
 				type: 'text',
 				content: speech
 				}];
@@ -74,6 +70,11 @@ app.post('/CheckAccountStatus', (req, res) =>
 			res.status(200).json({
     					replies: reply
   				});
+			
+						    
+		});
+		//console.log(speech);
+		
 	//}
 	//----------------------------------------------
 });
