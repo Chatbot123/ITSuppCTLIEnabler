@@ -45,8 +45,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 			//{   
 				csrfToken = response.headers['x-csrf-token'];
 				console.log("csrf token" + csrfToken);
-				var res = response.body;
-				statusDetail = res.d.AccountStatus;               
+				var res = JSON.parse(response.body);
+				var statusDetail = res.d.AccountStatus;               
 	 		//}
 	 		console.log("statusDetail" + statusDetail);
 	 		if (statusDetail == "ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED")
