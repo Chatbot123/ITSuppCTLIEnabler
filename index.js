@@ -12,7 +12,7 @@ app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
 //code for creating servicenow incident
 app.post('/CheckAccountStatus', (req, res) => 
 {
-	  console.log(JSON.stringify(req.body));
+	  //console.log(JSON.stringify(req.body));
 	  //console.log(req.body.conversation.memory.intent_name.slug);
 	  //speech = " Thanks for contacting us."
 	var speech;
@@ -39,17 +39,17 @@ app.post('/CheckAccountStatus', (req, res) =>
 		requestify.request(url,options).then(function(response)
 		{
 		  	var csrfToken;
-			 console.log(response);
-			console.log("status code"+response.code);
+			// console.log(response);
+			//console.log("status code"+response.code);
 			
 	  		if (response.code == 200) 
 			{   
 				csrfToken = response.headers['x-csrf-token'];
-				console.log("csrf token" + csrfToken);
+				//console.log("csrf token" + csrfToken);
 				var res = JSON.parse(response.body);
 				var statusDetail = res.d.AccountStatus;               
 	 		}
-	 		console.log("statusDetail" + statusDetail);
+	 		//console.log("statusDetail" + statusDetail);
 			
 	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
 	 		{
@@ -60,16 +60,17 @@ app.post('/CheckAccountStatus', (req, res) =>
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
-			console.log(speech);
+			//console.log(speech);
 			speech = speech.replace(/  +/g, ' ');
 			console.log(speech);//----------------------------------------------
-			var reply = [{
+			
+		});
+		var reply = [{
 				type: 'text',
 				content: speech
 				}];
 			res.status(200).json({
 					replies: reply });
-		});
 		
 	}
 	//----------------------------------------------
