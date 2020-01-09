@@ -66,8 +66,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 						"type": "text",
 						"content": speech
 						}];
-				
-					res.status(200).send({
+				res = {};
+					res.status(200).json({
 							"replies": reply });	
 			
 			console.log("after res " + JSON.stringify(res));
