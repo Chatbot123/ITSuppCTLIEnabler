@@ -32,7 +32,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 					     'Authorization': 'Basic Q0hBVEJPVF9URVNUOlRlc3QxMjM0',
 					     'content-type':'application/json',
 					     'x-csrf-token':'Fetch' 
-					} 
+					} ,
+				dataType: 'json'
 				};
 
 
@@ -46,8 +47,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 			{   
 				csrfToken = response.headers['x-csrf-token'];
 				console.log("csrf token" + csrfToken);
-				var res = JSON.parse(response.body);
-				var statusDetail = res.d.AccountStatus;               
+				var result = JSON.parse(response.body);
+				var statusDetail = result.d.AccountStatus;               
 	 		}
 	 		console.log("statusDetail" + statusDetail);
 			
@@ -60,15 +61,15 @@ app.post('/CheckAccountStatus', (req, res) =>
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			 speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
-			console.log("res " + JSON.stringify(res));
-			console.log(speech);
+			//console.log("res " + JSON.stringify(res));
+			//console.log(speech);
 				var reply = [{
-						"type": "text",
-						"content": speech
-						}];
-				res = {"replies": reply };
-			console.log("after reset res " + JSON.stringify(res));
-					res.status(200).send();	
+				type: 'text',
+				content: speech
+				}];
+
+			res.status(200).json({
+					replies: reply });
 			
 			
 			
