@@ -70,7 +70,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 							"replies": reply });	
 			
 			
-		}/*, function(error) 
+		/*}, function(error) 
 		{
 						var errorMessage = "GET request failed";
 						if(error.code && error.body) {
