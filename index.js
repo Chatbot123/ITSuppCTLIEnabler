@@ -68,8 +68,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 						}];
 				res = {"replies": reply };
 			console.log("after reset res " + JSON.stringify(res));
-					res.status(200).json({
-							"replies": reply });	
+					res.status(200).send();	
 			
 			
 			
