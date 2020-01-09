@@ -60,12 +60,13 @@ app.post('/CheckAccountStatus', (req, res) =>
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			 speech = "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 	 		}
+			console.log("res " + res);
 			console.log(speech);
 				var reply = [{
 						"type": "text",
 						"content": speech
 						}];
-
+				
 					res.status(200).send({
 							"replies": reply });	
 			
