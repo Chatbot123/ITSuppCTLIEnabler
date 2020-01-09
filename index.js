@@ -62,15 +62,15 @@ app.post('/CheckAccountStatus', (req, res) =>
 	 		}
 			console.log(speech);
 				var reply = [{
-						type: 'text',
-						content: speech
+						"type": "text",
+						"content": speech
 						}];
 
 					res.status(200).json({
-							replies: reply });	
+							"replies": reply });	
 			
 			
-		}, function(error) 
+		}/*, function(error) 
 		{
 						var errorMessage = "GET request failed";
 						if(error.code && error.body) {
@@ -78,7 +78,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 		}
 						console.log("Something went wrong with the call");
 						console.log(errorMessage);
-						console.log(error.body);
+						console.log(error.body);*/
 						
 								
 		});
