@@ -36,7 +36,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 				};
 
 
-		requestify.request(url,options).then(function(response,res)
+		requestify.request(url,options).then(function(response)
 		{
 		  	var csrfToken;
 			 console.log(response);
@@ -67,10 +67,11 @@ app.post('/CheckAccountStatus', (req, res) =>
 						"content": speech
 						}];
 				res = {};
+			console.log("after reset res " + JSON.stringify(res));
 					res.status(200).json({
 							"replies": reply });	
 			
-			console.log("after res " + JSON.stringify(res));
+			
 			
 			
 		/*}, function(error) 
