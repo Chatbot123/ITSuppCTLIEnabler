@@ -167,6 +167,7 @@ app.post('/unlockAccountCall', (req, res) =>
 						};
 						requestify.request(url,options).then(function(response)
 						{
+							console.log("status code in put request "+response.code);
 						  if ( response.code == 204 ) 
 						  {   
 							  var reply = 	[{	type: 'text',
