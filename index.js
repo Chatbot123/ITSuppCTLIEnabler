@@ -48,24 +48,28 @@ app.post('/CheckAccountStatus', (req, res) =>
 				csrfToken = response.headers['x-csrf-token'];
 				console.log("csrf token" + csrfToken);
 				var result = JSON.parse(response.body);
-				var statusDetail = result.d.AccountStatus;               
+				var statusDetail = result.d.AccountStatus;
+				var firstname = result.d.Firstname;
+				var lastname = result.d.Lastname;
 	 		}
 	 		console.log("statusDetail" + statusDetail);
 			
 	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
 	 		{
+				var content_value = firstname+" "lastname+" Your account is already unlocked!";
 	   			 var reply = 	[{	type: 'text',
-							content: 'Your account is already unlocked!'
+							content: content_value
 						}];
 					 
 	 		}
 	 		else if(statusDetail == 'ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED')
 	 		{
+				var content_value = firstname+" "lastname+" Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			 reply = 	[{
 				    			"type": "quickReplies",
 				    			"content": {
-				      					"title": "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?",
+				      					"title": content_value
 				      					"buttons": [
 											{
 											  "title": "YES",
