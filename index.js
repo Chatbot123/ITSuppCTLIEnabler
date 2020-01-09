@@ -64,12 +64,12 @@ app.post('/CheckAccountStatus', (req, res) =>
 	 		}
 	 		else if(statusDetail == 'ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED')
 	 		{
-				var content_value = firstname+" "+lastname+" Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
+				 content_value = firstname+" "+lastname+" Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			 reply = 	[{
 				    			"type": "quickReplies",
 				    			"content": {
-				      					"title": content_value
+				      					"title": content_value,
 				      					"buttons": [
 											{
 											  "title": "YES",
