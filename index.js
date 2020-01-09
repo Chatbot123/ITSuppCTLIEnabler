@@ -175,9 +175,11 @@ app.post('/unlockAccountCall', (req, res) =>
 						}];
 							  //session.send("I have successfully unlocked your account. I am sending an email to IT support for auditing");
 						  }
+							
+							res.status(200).json({
+					replies: reply });
                 });
-			res.status(200).json({
-					replies: reply });	
+				
 				           
 	 		}
 	 		
