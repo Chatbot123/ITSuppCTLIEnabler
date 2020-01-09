@@ -109,3 +109,93 @@ app.post('/CheckAccountStatus', (req, res) =>
 });
 
 
+app.post('/unlockAccountCall', (req, res) => 
+{
+	  //console.log(JSON.stringify(req.body));
+	  //console.log(req.body.conversation.memory.intent_name.slug);
+	  //speech = " Thanks for contacting us."
+	//var speech;
+		
+		//speech = " Thanks for contacting us. checking for personal account status"
+		var v_cookie;
+         var options = 
+         { 
+          
+            method: 'GET',
+            url: 'https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV;o=ERP_700/UserUnLockSet%28%27PXV166366%27%29',
+            
+            
+            headers: 
+            { 
+              'Host': 'sapmobile-gwx.centurylink.com',
+              'Authorization': 'Basic Q0hBVEJPVF9URVNUOlRlc3QxMjM0',
+              'content-type':'application/json',
+              // jar : j,
+              'x-csrf-token':'Fetch' 
+            } 
+          };
+
+
+		requestify.request(url,options).then(function(response)
+		{
+		  	var csrfToken;
+			 console.log(response);
+			console.log("status code"+response.code);
+			
+	  		if (response.code == 200) 
+			{   
+				csrfToken = response.headers['x-csrf-token'];
+				console.log("csrf token" + csrfToken);
+				 v_cookie = response.headers['set-cookie'];
+				var v_payload = {};
+				v_payload.Username = 'PXV166366';
+				var url = 'https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV;o=ERP_700/UserUnLockSet%28%27PXV166366%27%29';
+				 var options = 
+						{ 
+						  method: 'PUT',
+						  body : v_payload,
+						  json : true,
+						  headers: 
+						    { 
+						      "Host": 'sapmobile-gwx.centurylink.com',
+						      "Authorization": 'Basic Q0hBVEJPVF9URVNUOlRlc3QxMjM0',
+						      "Content-Type":'application/json',
+						      "x-csrf-token": csrfToken,
+						      "Cookie":v_cookie[2]
+						    } 
+						};
+						requestify.request(url,options).then(function(response)
+						{
+						  if ( response.code == 204 ) 
+						  {   
+							  var reply = 	[{	type: 'text',
+							content: 'I have successfully unlocked your account. I am sending an email to IT support for auditing'
+						}];
+							  //session.send("I have successfully unlocked your account. I am sending an email to IT support for auditing");
+						  }
+                });
+				
+				           
+	 		}
+	 		
+				
+
+			res.status(200).json({
+					replies: reply });
+			
+			
+			
+			
+		
+						
+								
+		});
+			
+		//console.log(speech);
+		
+	
+	//----------------------------------------------
+});
+
+
+
