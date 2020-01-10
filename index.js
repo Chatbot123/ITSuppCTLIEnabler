@@ -16,8 +16,8 @@ app.post('/CheckAccountStatus', (req, res) =>
 	  //console.log(req.body.conversation.memory.intent_name.slug);
 	  //speech = " Thanks for contacting us."
 	//var speech;
-	if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
-	{	
+	//if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal")
+	//{	
 		//speech = " Thanks for contacting us. checking for personal account status"
 		var csrfToken;
 		var url = "https://sapmobile-gwx.centurylink.com/sap/opu/odata/sap/ZUSER_MAINT_OPRS_CHATBOT_SRV/UserStatusCheckSet(Aduser='praveen.varriam@centurylink.com',PwdStatusCheckFlag='X',UserLockCheckFlag='X')/?$format=json";
@@ -53,18 +53,46 @@ app.post('/CheckAccountStatus', (req, res) =>
 				var lastname = result.d.Lastname;
 	 		}
 	 		console.log("statusDetail" + statusDetail);
+			if(req.body.conversation.memory.intent_name.slug=="resetpassword-personal")
+				{
+					var content_value = "Hi "+firstname+" "+lastname+", Your account password not expired! Do you want me to reset your password?";
+					 reply = 	[{
+				    			"type": "quickReplies",
+				    			"content": {
+				      					"title": content_value,
+				      					"buttons": [
+											{
+											  "title": "YES",
+											  "value": "YES"
+											},
+											{
+											  "title": "NO",
+											  "value": "NO"
+											},
+				     						   ]
+				    				   }
+				  		}];
+				}
+				
 			
-	 		if (statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
+	 		if (req.body.conversation.memory.intent_name.slug=="unlockaccount-personal" && statusDetail == 'ACCOUNT_NOT_LOCKED AND PASSWORD_NOT_EXPIRED')
 	 		{
-				var content_value = "Hi "+firstname+" "+lastname+", Your account is already unlocked!";
+				
+					var content_value = "Hi "+firstname+" "+lastname+", Your account is already unlocked!";	
+				
+				
 	   			 var reply = 	[{	type: 'text',
 							content: content_value
 						}];
 					 
 	 		}
-	 		else if(statusDetail == 'ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED')
+	 		else if(req.body.conversation.memory.intent_name.slug=="unlockaccount-personal" && statusDetail == 'ACCOUNT_SUSPENDED_BY_ADMIN AND PASSWORD_NOT_EXPIRED')
 	 		{
-				 content_value = "Hi "+firstname+" "+lastname+", Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
+				
+					var content_value = "Hi "+firstname+" "+lastname+", Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
+				 
+				
+				content_value = "Hi "+firstname+" "+lastname+", Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?";
 			  // builder.Prompts.choice(session, "Your account has been locked by admin. I can help you get it unlocked, do you want me to proceed ?","Yes|No",{listStyle:3});
 	   			 reply = 	[{
 				    			"type": "quickReplies",
@@ -83,6 +111,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 				    				   }
 				  		}];
 	 		}
+			
 			//console.log("res " + JSON.stringify(res));
 			//console.log(speech);
 				
@@ -108,7 +137,7 @@ app.post('/CheckAccountStatus', (req, res) =>
 			
 		//console.log(speech);
 		
-	}
+	//}
 	//----------------------------------------------
 });
 
